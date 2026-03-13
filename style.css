@@ -124,14 +124,7 @@ nav.scrolled {
 }
 .logo-icon {
   width: 30px; height: 30px;
-  background: var(--brand);
-  color: #352d1b;
   border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 15px;
 }
 .logo-text { font-weight: 700; font-size: 17px; letter-spacing: -0.02em; }
 .nav-right { display: flex; align-items: center; gap: 10px; }
@@ -153,7 +146,7 @@ nav.scrolled {
 .hero {
   min-height: 100vh;
   padding: calc(var(--nav-h) + 60px) 24px 80px;
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -208,145 +201,185 @@ nav.scrolled {
   color: var(--text);
 }
 
-/* ─── App Mockup ───────────────────────────────────────────── */
-.hero-mockup {
-  flex-shrink: 0;
-  width: 320px;
+/* ─── Hero Demo Animation ─────────────────────────────────── */
+.hero-demo {
+  flex: 1.5;
+  min-width: 0;
   display: flex;
   justify-content: center;
 }
-.app-mockup {
-  width: 300px;
-  border-radius: 13px;
-  background: var(--surface-raised);
-  border: 1px solid var(--border-light);
-  overflow: hidden;
+.demo-desktop {
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 4/3;
+  background: #0d0d0d;
+  border-radius: 14px;
+  position: relative;
+  overflow: clip;
+  animation: demo-overflow 10s ease-in-out infinite;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04),
-    0 0 60px rgba(240, 189, 63, 0.1),
+    0 0 0 1px rgba(255,255,255,0.06),
     0 32px 80px rgba(0, 0, 0, 0.6);
 }
-.app-titlebar {
-  height: 40px;
-  padding: 0 14px;
+
+/* Fake browser window */
+.demo-browser {
+  position: absolute;
+  inset: 12px;
+  border-radius: 10px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: demo-browser-fade 10s ease-in-out infinite;
+}
+.demo-browser-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-  background: #201f1c;
-  -webkit-app-region: drag;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #222;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.traffic-lights { display: flex; gap: 7px; align-items: center; }
-.tl {
-  width: 12px; height: 12px;
+.demo-browser-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
-.tl-close { background: #ff5f57; }
-.tl-min { background: #febc2e; }
-.tl-max { background: #28c840; }
-.app-tabs {
+.demo-browser-url {
+  margin-left: 10px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+  padding: 2px 10px;
+  border-radius: 4px;
+  flex: 1;
+  text-align: center;
+}
+.demo-browser-body {
+  flex: 1;
+  padding: 16px 20px;
   display: flex;
-  padding: 0 2px;
+  flex-direction: column;
+  gap: 8px;
 }
-.app-tab {
-  padding: 8px 12px;
-  font-size: 11px;
+.demo-browser-line {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.06);
+}
+.demo-browser-line.w80 { width: 80%; }
+.demo-browser-line.w50 { width: 50%; }
+.demo-browser-line.w90 { width: 90%; }
+.demo-browser-line.w60 { width: 60%; }
+.demo-browser-line.w75 { width: 75%; }
+.demo-browser-line.w40 { width: 40%; }
+
+/* Hotkey indicator */
+.demo-hotkey {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  display: flex;
+  gap: 5px;
+  opacity: 0;
+  animation: demo-hotkey 10s ease-in-out infinite;
+  z-index: 10;
+}
+.demo-key {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-size: 12px;
   font-weight: 500;
-  color: var(--muted-dim);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
+  color: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: transform 0.1s;
 }
-.app-tab.active {
-  color: var(--brand);
-  border-bottom-color: var(--brand);
-}
-.app-notelist {
-  border-bottom: 1px solid var(--border);
-}
-.app-note {
-  padding: 9px 14px;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-}
-.app-note:last-child { border-bottom: none; }
-.app-note.active {
-  background: rgba(240, 189, 63, 0.06);
-  border-left: 2px solid var(--brand);
-  padding-left: 12px;
-}
-.app-note-title {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.app-note-preview {
-  font-size: 10.5px;
-  color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.app-editor {
-  padding: 12px 14px;
-}
-.app-editor-h1 {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 7px;
-}
-.app-editor-p {
-  font-size: 11px;
-  color: var(--muted);
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-.app-task {
+
+/* Boofa sliding in from right */
+.demo-boofa {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+  transform: translateX(calc(100% + 16px)) scale(1);
+  transform-origin: center center;
+  animation: demo-slide 10s ease-in-out infinite;
+  z-index: 5;
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 5px;
 }
-.app-checkbox {
-  width: 13px; height: 13px;
-  border-radius: 3px;
-  border: 1.5px solid var(--border-light);
-  flex-shrink: 0;
+.demo-boofa-clip {
+  height: 75%;
+  border-radius: 12px;
+  overflow: hidden;
+  animation: demo-glow 10s ease-in-out infinite;
 }
-.app-checkbox.checked {
-  background: var(--brand);
-  border-color: var(--brand);
-  position: relative;
+.demo-boofa-img {
+  height: 100%;
+  width: auto;
+  display: block;
+  /* slightly oversized to clip the rough window edges */
+  margin: -2px;
+  height: calc(100% + 4px);
 }
-.app-checkbox.checked::after {
-  content: '';
-  position: absolute;
-  top: 1px; left: 3px;
-  width: 5px; height: 8px;
-  border: 1.5px solid #352d1b;
-  border-top: none;
-  border-left: none;
-  transform: rotate(45deg);
+
+/* Hotkey: flash once when Boofa is summoned */
+@keyframes demo-hotkey {
+  0%   { opacity: 0; transform: translateX(-50%); }
+  12%  { opacity: 0; transform: translateX(-50%); }
+  15%  { opacity: 1; transform: translateX(-50%); }
+  17%  { opacity: 1; transform: translateX(-50%) scale(0.93); }
+  20%  { opacity: 1; transform: translateX(-50%); }
+  28%  { opacity: 0; transform: translateX(-50%); }
+  100% { opacity: 0; transform: translateX(-50%); }
 }
-.app-task-text {
-  font-size: 11px;
-  color: var(--text);
+
+/* Desktop: release overflow + fade background during zoom */
+@keyframes demo-overflow {
+  0%   { overflow: clip; background: #0d0d0d; box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 32px 80px rgba(0,0,0,0.6); }
+  34%  { overflow: clip; background: #0d0d0d; box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 32px 80px rgba(0,0,0,0.6); }
+  35%  { overflow: visible; background: transparent; box-shadow: none; }
+  87%  { overflow: visible; background: transparent; box-shadow: none; }
+  88%  { overflow: clip; background: #0d0d0d; box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 32px 80px rgba(0,0,0,0.6); }
+  100% { overflow: clip; background: #0d0d0d; box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 32px 80px rgba(0,0,0,0.6); }
 }
-.app-task-text.done {
-  text-decoration: line-through;
-  color: var(--muted-dim);
+
+/* Browser fades out as Boofa zooms in */
+@keyframes demo-browser-fade {
+  0%   { opacity: 1; }
+  35%  { opacity: 1; }
+  48%  { opacity: 0; }
+  88%  { opacity: 0; }
+  100% { opacity: 1; }
 }
-.app-cursor {
-  display: inline-block;
-  width: 1.5px;
-  height: 13px;
-  background: var(--brand);
-  vertical-align: text-bottom;
-  transition: opacity 0.1s;
+
+/* Glow: brand-colored outer glow during zoom phase */
+@keyframes demo-glow {
+  0%   { box-shadow: -4px 0 24px rgba(0,0,0,0.5); }
+  35%  { box-shadow: -4px 0 24px rgba(0,0,0,0.5); }
+  50%  { box-shadow: 0 0 24px rgba(255,255,255,0.08), 0 0 60px rgba(255,255,255,0.03), 0 8px 32px rgba(0,0,0,0.4); }
+  78%  { box-shadow: 0 0 24px rgba(255,255,255,0.08), 0 0 60px rgba(255,255,255,0.03), 0 8px 32px rgba(0,0,0,0.4); }
+  88%  { box-shadow: -4px 0 24px rgba(0,0,0,0.5); }
+  100% { box-shadow: -4px 0 24px rgba(0,0,0,0.5); }
+}
+
+/* Boofa: slide in → hold → zoom up to fill → hold → fade out → reset */
+@keyframes demo-slide {
+  0%   { transform: translateX(calc(100% + 16px)) scale(1); opacity: 1; }
+  15%  { transform: translateX(calc(100% + 16px)) scale(1); opacity: 1; }
+  24%  { transform: translateX(0) scale(1); opacity: 1; }
+  35%  { transform: translateX(0) scale(1); opacity: 1; }
+  50%  { transform: translateX(-55%) scale(1.7); opacity: 1; }
+  78%  { transform: translateX(-55%) scale(1.7); opacity: 1; }
+  88%  { transform: translateX(-55%) scale(1.7); opacity: 0; }
+  89%  { transform: translateX(calc(100% + 16px)) scale(1); opacity: 0; }
+  100% { transform: translateX(calc(100% + 16px)) scale(1); opacity: 0; }
 }
 
 /* ─── Features ─────────────────────────────────────────────── */
@@ -551,14 +584,7 @@ footer {
 .footer-logo-row { display: flex; align-items: center; gap: 8px; }
 .logo-icon-sm {
   width: 24px; height: 24px;
-  background: var(--brand);
-  color: #352d1b;
   border-radius: 5px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 12px;
 }
 .footer-brand { font-weight: 700; font-size: 15px; }
 .footer-tagline { font-size: 12px; color: var(--muted-dim); }
@@ -583,8 +609,7 @@ footer {
   .hero-subtitle { max-width: none; }
   .hero-actions { justify-content: center; }
   .shortcut-badge { margin-bottom: 20px; }
-  .hero-mockup { width: 100%; }
-  .app-mockup { width: min(300px, 100%); margin: 0 auto; }
+  .hero-demo { width: 100%; }
   .screenshot-inner { flex-direction: column; }
   .themes-grid { grid-template-columns: repeat(2, 1fr); }
 }

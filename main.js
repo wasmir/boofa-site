@@ -25,6 +25,14 @@ function applyLang(lang) {
   const btn = document.getElementById('langToggle');
   if (btn) btn.textContent = lang === 'zh' ? 'EN' : '中文';
 
+  // Update app screenshot based on language
+  const screenshot = document.querySelector('.demo-boofa-img');
+  if (screenshot) {
+    screenshot.src = lang === 'zh'
+      ? screenshot.dataset.screenshotZh
+      : screenshot.dataset.screenshotEn;
+  }
+
   // Update page title & meta
   document.title = i18n[lang].page_title;
   const metaDesc = document.querySelector('meta[name="description"]');
@@ -49,16 +57,6 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Cursor blink animation for mockup
-let cursorVisible = true;
-const cursor = document.querySelector('.app-cursor');
-if (cursor) {
-  setInterval(() => {
-    cursorVisible = !cursorVisible;
-    cursor.style.opacity = cursorVisible ? '1' : '0';
-  }, 530);
-}
 
 // Nav scroll state
 const nav = document.querySelector('nav');

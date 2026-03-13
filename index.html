@@ -9,6 +9,7 @@
   <meta property="og:description" content="macOS 全局快速笔记工具，一键唤出浮动面板，记录想法不打断工作流。">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,12 +18,12 @@
   <nav>
     <div class="nav-inner">
       <div class="logo">
-        <span class="logo-icon">B</span>
+        <img class="logo-icon" src="assets/icon.png" alt="Boofa">
         <span class="logo-text">Boofa</span>
       </div>
       <div class="nav-right">
         <button class="lang-toggle" id="langToggle">EN</button>
-        <a href="#" class="btn btn-primary" data-i18n="nav_download">下载</a>
+        <a href="https://apps.apple.com/app/id6755095228" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="nav_download">下载</a>
       </div>
     </div>
   </nav>
@@ -33,65 +34,47 @@
       <div class="shortcut-badge">
         <span data-i18n="shortcut_label">全局快捷键</span>
         <span class="shortcut-keys">
-          <span class="key">⌥</span>
+          <span class="key">⇧</span>
+          <span class="key">⌘</span>
           <span class="key">Space</span>
         </span>
       </div>
-      <p class="eyebrow" data-i18n="hero_eyebrow">macOS 应用</p>
       <h1 class="hero-title" data-i18n="hero_title">随叫随到的<br>笔记侧边栏</h1>
       <p class="hero-subtitle" data-i18n="hero_subtitle">按下全局快捷键，浮动笔记面板即刻出现。记录想法、任务、代码片段，不切换应用，不打断专注。</p>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary btn-large" data-i18n="hero_cta">下载 macOS 版</a>
+        <a href="https://apps.apple.com/app/id6755095228" target="_blank" rel="noopener" class="btn btn-primary btn-large" data-i18n="hero_cta">下载 macOS 版</a>
       </div>
-      <p class="hero-version" data-i18n="hero_version">v1.4.1 · 需要 macOS 12+</p>
     </div>
 
-    <div class="hero-mockup">
-      <div class="app-mockup">
-        <!-- Title bar -->
-        <div class="app-titlebar">
-          <div class="traffic-lights">
-            <span class="tl tl-close"></span>
-            <span class="tl tl-min"></span>
-            <span class="tl tl-max"></span>
+    <div class="hero-demo">
+      <div class="demo-desktop">
+        <!-- Fake browser window as desktop background -->
+        <div class="demo-browser">
+          <div class="demo-browser-bar">
+            <span class="demo-browser-dot" style="background:#ff5f57"></span>
+            <span class="demo-browser-dot" style="background:#febc2e"></span>
+            <span class="demo-browser-dot" style="background:#28c840"></span>
+            <span class="demo-browser-url">github.com</span>
           </div>
-          <div class="app-tabs">
-            <span class="app-tab active">Notes</span>
-            <span class="app-tab">Tasks</span>
-          </div>
-          <div style="width:62px"></div>
-        </div>
-        <!-- Note list -->
-        <div class="app-notelist">
-          <div class="app-note active">
-            <div class="app-note-title">Morning ideas ⭐</div>
-            <div class="app-note-preview">Build something amazing today...</div>
-          </div>
-          <div class="app-note">
-            <div class="app-note-title">Project tasks</div>
-            <div class="app-note-preview">☑ Design UI  ☐ Write tests</div>
-          </div>
-          <div class="app-note">
-            <div class="app-note-title">Code snippet</div>
-            <div class="app-note-preview">const boofa = () => invoke()</div>
+          <div class="demo-browser-body">
+            <div class="demo-browser-line w80"></div>
+            <div class="demo-browser-line w50"></div>
+            <div class="demo-browser-line w90"></div>
+            <div class="demo-browser-line w60"></div>
+            <div class="demo-browser-line w75"></div>
+            <div class="demo-browser-line w40"></div>
           </div>
         </div>
-        <!-- Editor -->
-        <div class="app-editor">
-          <div class="app-editor-h1">Morning ideas</div>
-          <div class="app-editor-p">Build something amazing today, capture every fleeting thought...</div>
-          <div class="app-task">
-            <span class="app-checkbox checked"></span>
-            <span class="app-task-text done">Set up the project</span>
-          </div>
-          <div class="app-task">
-            <span class="app-checkbox checked"></span>
-            <span class="app-task-text done">Design the interface</span>
-          </div>
-          <div class="app-task">
-            <span class="app-checkbox"></span>
-            <span class="app-task-text">Launch the website</span>
-            <span class="app-cursor"></span>
+        <!-- Hotkey indicator -->
+        <div class="demo-hotkey">
+          <span class="demo-key">⇧</span>
+          <span class="demo-key">⌘</span>
+          <span class="demo-key">Space</span>
+        </div>
+        <!-- Boofa app sliding in from right -->
+        <div class="demo-boofa">
+          <div class="demo-boofa-clip">
+            <img class="demo-boofa-img" src="assets/screenshots/main-cn-dark.png" data-screenshot-zh="assets/screenshots/main-cn-dark.png" data-screenshot-en="assets/screenshots/main-en-dark.png" alt="Boofa App">
           </div>
         </div>
       </div>
@@ -102,7 +85,6 @@
   <section class="features" id="features">
     <div class="container">
       <div class="features-header reveal">
-        <p class="eyebrow" data-i18n="features_eyebrow">功能</p>
         <h2 class="section-title" data-i18n="features_title">刚刚好的功能，<br>不多不少</h2>
       </div>
       <div class="features-grid">
@@ -122,41 +104,20 @@
           <p data-i18n="feat3_desc">所有笔记中的待办事项汇聚到一个任务视图，无需翻找笔记，直接勾选完成。</p>
         </div>
         <div class="feature-card reveal reveal-delay-4">
-          <div class="feature-icon">🎨</div>
-          <h3 data-i18n="feat4_title">主题与外观</h3>
-          <p data-i18n="feat4_desc">4 套配色方案，各支持深色与浅色模式，自动跟随系统偏好。</p>
+          <div class="feature-icon">📌</div>
+          <h3 data-i18n="feat4_title">桌面便签</h3>
+          <p data-i18n="feat4_desc">将笔记弹出为桌面便签，置顶、折叠、磁吸贴边，11 种配色和透明度随心调。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Screenshot / Demo ── -->
-  <section class="screenshot-section">
-    <div class="container">
-      <div class="screenshot-inner">
-        <div class="screenshot-text reveal">
-          <p class="eyebrow" data-i18n="screenshot_eyebrow">界面</p>
-          <h2 class="section-title" data-i18n="screenshot_title">专注当下，<br>不打扰工作流</h2>
-          <p class="section-subtitle" data-i18n="screenshot_subtitle">轻薄的侧边抽屉，用时出现，用完消失。没有多余的窗口，不打断任何工作流。</p>
-        </div>
-        <div class="screenshot-visual reveal reveal-delay-1">
-          <div class="screenshot-frame">
-            <!-- Replace this with an actual screenshot: <img src="assets/screenshots/main.png" alt="Boofa App"> -->
-            <div class="screenshot-placeholder">
-              <div style="font-size:32px;margin-bottom:10px;">📸</div>
-              <div>App screenshot</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- ── Integrations ── -->
   <section class="integrations">
     <div class="container">
       <div class="integrations-header reveal">
-        <p class="eyebrow" data-i18n="integrations_eyebrow">导出</p>
         <h2 class="section-title" data-i18n="integrations_title">与现有工具<br>无缝衔接</h2>
       </div>
       <div class="integrations-grid">
@@ -183,7 +144,6 @@
   <section class="themes-section">
     <div class="container">
       <div class="themes-header reveal">
-        <p class="eyebrow" data-i18n="themes_eyebrow">主题</p>
         <h2 class="section-title" data-i18n="themes_title">选择你的配色</h2>
         <p class="section-subtitle" data-i18n="themes_subtitle">每套主题都支持深色和浅色模式，并自动适配系统设置。</p>
       </div>
@@ -245,14 +205,11 @@
     <div class="container footer-inner">
       <div class="footer-left">
         <div class="footer-logo-row">
-          <span class="logo-icon-sm">B</span>
+          <img class="logo-icon-sm" src="assets/icon.png" alt="Boofa">
           <span class="footer-brand">Boofa</span>
         </div>
         <p class="footer-tagline" data-i18n="footer_tagline">专为 macOS 打造，只为不打扰你。</p>
         <p class="footer-copy">© 2025 Boofa. <span data-i18n="footer_rights">保留所有权利。</span></p>
-      </div>
-      <div class="footer-right">
-        <a href="https://github.com/wasmir" target="_blank" rel="noopener" data-i18n="footer_github">GitHub</a>
       </div>
     </div>
   </footer>
